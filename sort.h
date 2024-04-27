@@ -26,7 +26,4 @@ void print_list(const listint_t *list);
 /* functions */
 void bubble_sort(int *array, size_t size);
 
-
-
-#endif //
-
+#endif
