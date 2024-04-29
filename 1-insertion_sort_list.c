@@ -12,8 +12,8 @@ void swap_nodes(listint_t **lst, listint_t **A1, listint_t *B2)
 	(*A1)->next = B2->next;
 	if (B2->next != NULL)
 		B2->next->prev = *A1;
-	b2->prev = (*A1)->prev;
-	b2->next = *A1;
+	B2->prev = (*A1)->prev;
+	B2->next = *A1;
 	if ((*A1)->prev != NULL)
 		(*A1)->prev->next = B2;
 	else
