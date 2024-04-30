@@ -1,5 +1,5 @@
-#ifndef _SORT_H
-#define _SORT_H
+#ifndef SORT_H
+#define SORT_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,8 +28,12 @@ void bubble_sort(int *array, size_t size);
 void selection_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
+<<<<<<< HEAD
 void quick_sort(int *array, size_t size);
 
+=======
+void counting_sort(int *array, size_t size);
+>>>>>>> 3e3d8c3a3b31a983b808fc8f81ad196bcabb378a
 
 #endif
 
