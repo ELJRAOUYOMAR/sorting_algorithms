@@ -1,10 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <sort.h>
 
 void merge(int *left, size_t left_size, int *right, size_t right_size, int *array);
 void merge_sort(int *array, size_t size);
 
-void merge_sort(int *array, size_t size) {
+void merge_sort(int *array, size_t size)
+
+/**
+ * merge_subarr - Merge two subarrays into a single sorted array.
+ *
+ * Rerun : Nothing.
+ */
+{
     if (size <= 1) {
         return;
     }
