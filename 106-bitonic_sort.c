@@ -1,11 +1,4 @@
 #include "sort.h"
-#include <stdio.h>
-
-void swap(int *a, int *b);
-void merge_bitonic(int *array, size_t size, size_t start, size_t seq,
-                   char flow);
-void build_bitonic(int *array, size_t size, size_t start, size_t seq, char flow);
-void bitonic_sort(int *array, size_t size);
 
 /**
  * swap - Swaps two integers in an array.
@@ -29,21 +22,21 @@ void swap(int *a, int *b)
  * @seq: The size of the sequence to sort.
  * @flow: The direction to sort in.
  */
-void merge_bitonic(int *array, size_t size, size_t start, size_t seq,
-                   char flow)
+void merge_bitonic(int *array, size_t size, size_t start_index, size_t sequence,
+                   char direction)
 {
-    size_t i, jump = seq / 2;
+    size_t i, jump = sequence / 2;
 
-    if (seq > 1)
+    if (sequence > 1)
     {
-        for (i = start; i < start + jump; i++)
+        for (i = start_index; i < start_index + jump; i++)
         {
-            if ((flow == 'U' && array[i] > array[i + jump]) ||
-                (flow == 'D' && array[i] < array[i + jump]))
+            if ((direction == 'U' && array[i] > array[i + jump]) ||
+                (direction == 'D' && array[i] < array[i + jump]))
                 swap(&array[i], &array[i + jump]);
         }
-        merge_bitonic(array, size, start, jump, flow);
-        merge_bitonic(array, size, start + jump, jump, flow);
+        merge_bitonic(array, size, start_index, jump, direction);
+        merge_bitonic(array, size, start_index + jump, jump, direction);
     }
 }
 
@@ -55,22 +48,22 @@ void merge_bitonic(int *array, size_t size, size_t start, size_t seq,
  * @seq: The size of a block of the building bitonic sequence.
  * @flow: The direction to sort the bitonic sequence block in.
  */
-void build_bitonic(int *array, size_t size, size_t start, size_t seq, char flow)
+void build_bitonic(int *array, size_t size, size_t start_index, size_t sequence, char direction)
 {
-    size_t cut = seq / 2;
-    char *str = (flow == 'U') ? "UP" : "DOWN";
+    size_t cut = sequence / 2;
+    char *str = (direction == 'U') ? "UP" : "DOWN";
 
-    if (seq > 1)
+    if (sequence > 1)
     {
-        printf("Merging [%lu/%lu] (%s):\n", seq, size, str);
-        print_array(array + start, seq);
+        printf("Merging [%lu/%lu] (%s):\n", sequence, size, str);
+        print_array(array + start_index, sequence);
 
-        build_bitonic(array, size, start, cut, 'U');
-        build_bitonic(array, size, start + cut, cut, 'D');
-        merge_bitonic(array, size, start, seq, flow);
+        build_bitonic(array, size, start_index, cut, 'U');
+        build_bitonic(array, size, start_index + cut, cut, 'D');
+        merge_bitonic(array, size, start_index, sequence, direction);
 
-        printf("Result [%lu/%lu] (%s):\n", seq, size, str);
-        print_array(array + start, seq);
+        printf("Result [%lu/%lu] (%s):\n", sequence, size, str);
+        print_array(array + start_index, sequence);
     }
 }
 
