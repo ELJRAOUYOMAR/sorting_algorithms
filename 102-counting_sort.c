@@ -56,11 +56,8 @@ void counting_sort(int *array, size_t size)
     for (i = 0; i < size; i++)
         array[i] = output[i];
 
-    /* Print the counting array */
-    printf("%d", count[0]);
-    for (i = 1; i <= (size_t)max_number; i++)
-        printf(", %d", count[i]);
-    printf("\n");
+    /* Print the sorted array */
+    print_array(array, size);
 
     /* Free dynamically allocated memory */
     free(count);
