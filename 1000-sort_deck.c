@@ -148,3 +148,8 @@ void sort_deck(deck_node_t **deck)
 	insertionSortDeckKind(deck);
 	insertionSortDeckValue(deck);
 }
+
+
+
+
+
