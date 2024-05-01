@@ -27,38 +27,4 @@ int getMax(int *array, int size)
 /**
 * radixCountingSort - Counting sort for Radix Sort.
  * @array: Pointer to the array to be sorted.
- * @size: Size of the array.
- * @s: The current significant digit to sort on.
- * @buffer: Temporary buffer for sorting.
- * Return : Nothing
- */
-void radixCountingSort(int *array, size_t size, int s, int *buffer)
-{
-	int coun[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	size_t i;
-
-	for (i = 0; i < size; i++)
-		coun[(array[i] / s) % 10] += 1;
-
-	for (i = 0; i < 10; i++)
-		coun[i] += coun[i - 1];
-
-	for (i = size - 1; (int)i >= 0; i--)
-	{
-		buffer[coun[(array[i] / s) % 10] - 1] = array[i];
-		coun[(array[i] / s) % 10] -= 1;
-	}
-
-	for (i = 0; i < size; i++)
-		array[i] = buffer[i];
-}
-
-/**
- * radix_sort - Sorts an array of integers using Radix Sort algorithm.
- * @array: Pointer to the array to be sorted.
- * @size: Size of the array.
- * Return : Nothing.
- */
-void radix_sort(int *array, size_t size)
-{
-	int m
+ * @sim
