@@ -61,21 +61,4 @@ void radixCountingSort(int *array, size_t size, int s, int *buffer)
  */
 void radix_sort(int *array, size_t size)
 {
-	int m, s, *buffer;
-
-	if (array == NULL || size < 2)
-		return;
-
-	buffer = malloc(sizeof(int) * size);
-	if (buffer == NULL)
-		return;
-
-	m = getMax(array, size);
-	for (s = 1; m / s > 0; s *= 10)
-	{
-		radixCountingSort(array, size, s, buffer);
-		print_array(array, size);
-	}
-
-	free(buffer);
-}
+	int m
