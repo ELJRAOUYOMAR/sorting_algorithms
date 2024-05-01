@@ -1,18 +1,17 @@
 #include "sort.h"
 
 /**
- 
  * merge - Merges two subarrays into one sorted array
  * @array: The original array containing the subarrays
  * @left: The left subarray
  * @right: The right subarray
  * @size_l: The size of the left subarray
  * @size_r: The size of the right subarray
- */
-void merge(int array, intleft, int right, size_t size_l, size_t size_r)
+ **/
+void merge(int *array, int *left, int *right, size_t size_l, size_t size_r)
 {
     size_t i = 0, j = 0, k = 0;
-    inttmp = malloc(sizeof(int) * (size_l + size_r));
+    int *tmp = malloc(sizeof(int) * (size_l + size_r));
 
     if (!tmp)
         return;
@@ -45,17 +44,16 @@ void merge(int array, intleft, int right, size_t size_l, size_t size_r)
 }
 
 /**
- 
  * merge_sort - Sorts an array of integers in ascending order using Merge sort
  * @array: The array to be sorted
  * @size: Number of elements in @array
- */
-void merge_sort(int array, size_t size)
+ **/
+void merge_sort(int *array, size_t size)
 {
     if (size > 1)
     {
         size_t middle = size / 2;
-        intleft = array;
+        int *left = array;
         int *right = array + middle;
         size_t size_l = middle;
         size_t size_r = size - middle;
